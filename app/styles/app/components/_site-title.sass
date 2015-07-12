@@ -1,0 +1,78 @@
+////------------------------------------------
+.siteTitle
+  //------------------------------------------
+
+  // ----- Layout -----
+  padding:  1rem
+
+
+  &, > *
+    position: relative
+    z-index:  2
+
+
+
+  // ----- Looks -----
+  text-align: center
+
+  // ----- Content layout -----
+  .siteTitle-main + .siteTitle-sub
+    margin-top: 1rem
+
+  &:before
+    display:          block
+    content:          ''
+    position:         absolute !important
+    left:             0
+    right:            0
+    top:              0
+    height:           90px
+    background-color: rgba(0, 0, 0, 0.3)
+    border-radius:    0 0 50% 50%
+    z-index:          0
+
+  &:after
+    display:          block
+    content:          ''
+    position:         absolute
+    left:             0
+    right:            0
+    top:              0
+    height:           0
+    background-color: rgba(0, 0, 0, 0.3)
+    z-index:          0
+
+  +eq(small)
+    $extra-height:      30px
+    &:before
+      top:              $extra-height
+    &:after
+      height:           $extra-height
+
+  +eq(large)
+    $extra-height:      15px
+    &:before
+      top:              $extra-height
+    &:after
+      height:           $extra-height
+
+
+
+
+
+////------------------------------------------
+.siteTitle-main
+  //------------------------------------------
+
+  // ----- Text -----
+  +heading
+  font-size: 2rem
+
+
+
+////------------------------------------------
+.siteTitle-sub
+  //------------------------------------------
+
+  // ----- Text -----
+  font-size:   1.2rem

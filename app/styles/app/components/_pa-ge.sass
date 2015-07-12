@@ -1,0 +1,27 @@
+///------------------------------------------
+.paGe
+  //------------------------------------------
+
+  // ----- Content layout -----
+  .siteTitle
+    margin-bottom: 1rem
+
+  +eq(large, huge)
+
+    $sidebar-width-pc: 25%
+    $sidebar-width-px: 300px
+    $sidebar-width-mq: $sidebar-width-px * 100% / $sidebar-width-pc
+
+    .paGe-aside
+      position:  fixed
+      top:       0
+      left:      0
+      height:    100vh
+      width:     $sidebar-width-pc
+      max-width: $sidebar-width-px
+
+    .paGe-content
+      margin-left: $sidebar-width-pc
+
+      @media(min-width: #{$sidebar-width-mq})
+        margin-left: $sidebar-width-px

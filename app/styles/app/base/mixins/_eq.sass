@@ -1,0 +1,4 @@
+=eq($states...)
+  @each $state in $states
+    &[data-eq-state$="#{$state}"]
+      @content

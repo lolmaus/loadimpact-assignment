@@ -6,6 +6,7 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('requests', Ember.K); // This route should have default subroutes
 });
 
 export default Router;

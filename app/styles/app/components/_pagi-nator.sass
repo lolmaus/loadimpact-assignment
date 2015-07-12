@@ -1,0 +1,53 @@
+////------------------------------------------
+.pagiNator
+  //------------------------------------------
+
+  // ----- Looks -----
+
+  // ----- Text -----
+  font-family: Verdana, Segoe, sans-serif
+  text-align: center
+  font-size:  0.85rem
+
+  // ----- Content layout -----
+  .pagiNator-item
+    vertical-align: middle
+
+  .pagiNator-item._number:not(._nth-0)
+    display: none
+
+  @for $i from 1 through 4
+    @for $k from 1 through $i
+      +eq(size#{$k})
+        .pagiNator-item._number._nth-#{5 - $i}
+          display: inline
+
+
+  .pagiNator-extra2
+    display: none
+
+  @for $i from 2 through 5
+    &:not(.-pagesBeforeExtra).-before-#{$i}
+      @for $k from 1 through $i
+        +eq(size#{7 - $k})
+          .pagiNator-extra2._before
+            display: inline
+
+    &:not(.-pagesAfterExtra).-after-#{$i}
+      @for $k from 1 through $i
+        +eq(size#{7 - $k})
+          .pagiNator-extra2._after
+            display: inline
+
+
+
+////------------------------------------------
+.pagiNator-item
+  //------------------------------------------
+
+  // ----- Variations -----
+  &._arrow
+    font-size: 1.2em
+
+  &._currentNumber
+    font-weight: bold

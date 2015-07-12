@@ -12,6 +12,11 @@
     "jquery": "^1.11.1",
     "loader.js": "ember-cli/loader.js#3.2.0",
     "qunit": "~1.17.1",
-    "pretender": "^0.6.0"
+    "pretender": "^0.6.0",
+    "sticky": "~1.0.1",
+    "eq.js": "~1.6.0",
+    "sass-toolkit": "~2.9.0"
+  },
+  "devDependencies": {
   }
 }

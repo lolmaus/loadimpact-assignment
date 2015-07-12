@@ -1,0 +1,92 @@
+<div
+  class="paginatorWithOptions-main"
+  data-eq-pts="small: 0, large: 550"
+>
+  {{pagi-nator
+    page=page
+    totalPages=totalPages
+    class='paginatorWithOptions-paginator'
+  }}
+
+  <div class="paginatorWithOptions-toggler">
+    <a
+      class="paginatorWithOptions-toggler-toggler"
+      href
+      {{action 'toggleOptions'}}
+    >
+      {{#if optionsVisible}}
+        fewer options
+      {{else}}
+        more options
+      {{/if}}
+    </a>
+  </div>
+</div>
+
+<div
+  class="paginatorWithOptions-options"
+>
+  <div
+    class="paginatorWithOptions-options-inner"
+    data-eq-pts="small: 0, large: 500"
+  >
+    <div class="paginatorWithOptions-option _page">
+      <span class="paginatorWithOptions-option-label">
+        Page
+      </span>
+
+      <select
+        class="paginatorWithOptions-option-select"
+        onchange={{action "pageChanged" value="target.value"}}
+      >
+        {{#each pagesList as |choice|}}
+          <option value={{choice}} selected={{eq page choice}}>{{choice}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="paginatorWithOptions-option _limit">
+      <select
+        class="paginatorWithOptions-option-select"
+        onchange={{action "limitChanged" value="target.value"}}
+      >
+        {{#each availablePages as |choice|}}
+          <option value={{choice}} selected={{eq limit choice}}>{{choice}}</option>
+        {{/each}}
+      </select>
+
+      <span class="paginatorWithOptions-option-label">
+        per page
+      </span>
+    </div>
+
+    <div class="paginatorWithOptions-option _sortBy">
+      <span class="paginatorWithOptions-option-label">
+        Sort by
+      </span>
+
+      <select
+        class="paginatorWithOptions-option-select"
+        onchange={{action "sortByChanged" value="target.value"}}
+      >
+        {{#each sortByList as |choice|}}
+          <option value={{choice}} selected={{eq sortBy choice}}>{{choice}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="paginatorWithOptions-option _sortOrder">
+      <span class="paginatorWithOptions-option-label">
+        Order
+      </span>
+
+      <select
+        class="paginatorWithOptions-option-select"
+        onchange={{action "sortOrderChanged" value="target.value"}}
+      >
+        <option value='asc'  selected={{eq sortOrder 'asc'}} > ascending  </option>
+        <option value='desc' selected={{eq sortOrder 'desc'}}> descending </option>
+      </select>
+    </div>
+  </div>
+</div>

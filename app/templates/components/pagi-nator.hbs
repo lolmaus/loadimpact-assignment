@@ -1,0 +1,51 @@
+{{#if prevPage}}
+  {{link-to '«' 'requests.index' (query-params page=1)
+    class="pagiNator-item _arrow _rew"
+  }}
+{{/if}}
+
+{{#if prevPage}}
+  {{link-to '‹' 'requests.index' (query-params page=prevPage)
+    class="pagiNator-item _arrow _prev"
+  }}
+{{/if}}
+
+{{#if pagesBeforeExtra}}
+  <span class="pagiNator-extra">…</span>
+{{/if}}
+
+<span class="pagiNator-extra2 _before">…</span>
+
+{{#each pagesBefore as |page index|}}
+  <span class={{con-cat 'pagiNator-item _number _prevNumber _nth-' (mi-nus pagesBefore.length index 1)}}>
+    {{link-to page 'requests.index' (query-params page=page)}}
+  </span>
+{{/each}}
+
+<span class="pagiNator-item _currentNumber">
+  {{page}}
+</span>
+
+{{#each pagesAfter as |page index|}}
+  <span class={{con-cat 'pagiNator-item _number _nextNumber _nth-' index}}>
+    {{link-to page 'requests.index' (query-params page=page)}}
+  </span>
+{{/each}}
+
+<span class="pagiNator-extra2 _after">…</span>
+
+{{#if pagesAfterExtra}}
+  <span class="pagiNator-extra">…</span>
+{{/if}}
+
+{{#if nextPage}}
+  {{link-to '›' 'requests.index' (query-params page=nextPage)
+    class="pagiNator-item _arrow _next"
+  }}
+{{/if}}
+
+{{#if nextPage}}
+  {{link-to '»' 'requests.index' (query-params page=totalPages)
+    class="pagiNator-item _arrow _ff"
+  }}
+{{/if}}
