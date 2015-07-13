@@ -2,5 +2,41 @@
 .page-requests-index
   //------------------------------------------
 
+  // ----- Layout -----
+
+  //+eq(small, medium)
+  //  padding: 1rem
+  //
+  //  .page-requests-index-requestTitles
+  //    display: none
+  //
+  //  .reqUest
+  //    margin-bottom: 1rem
+  //
+  //
+  //+eq(medium)
+  //  display:    flex
+  //  flex-wrap:  wrap
+  //  justify-content: space-around
+  //
+  //  .reqUest
+  //    margin-right: 1rem
+  //
+  //  margin-right: -1rem
+  //
+  //+eq(large)
+
+  .page-requests-index-requestTitles
+    height: 2rem
+
+  display:      table
+  table-layout: fixed
+  width:        100%
+  min-width:    600px
+
   // ----- Looks -----
   +light
+
+  // ----- Content -----
+  .page-requests-index-requestTitles
+    font-weight: bold

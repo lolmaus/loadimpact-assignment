@@ -1,9 +1,16 @@
-<div class="page-requests-index">
+<div
+  class="page-requests-index"
+  data-eq-pts="small: 0, medium: 300, large: 600"
+>
 
-  {{#each model as |item|}}
-    <div>
-      ID: {{item.id}}, method: {{item.method}}, URL: {{item.url}}, foo: {{item.foo}}, bar: {{item.bar}}, baz: {{item.baz}}
-    </div>
+  {{req-uest
+    request=requestTitles
+    fake=true
+    class="page-requests-index-requestTitles"
+  }}
+
+  {{#each model as |request|}}
+    {{req-uest request=request}}
   {{/each}}
 
 </div>

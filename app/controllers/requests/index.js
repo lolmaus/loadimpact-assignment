@@ -15,6 +15,16 @@ export default Ember.Controller.extend({
   sortBy:      Ember.computed.alias('controllers.requests.sortBy'),
   sortOrder:   Ember.computed.alias('controllers.requests.sortOrder'),
 
+  // STATIC PROPERTIES
+  requestTitles: {
+    id:     'ID',
+    url:    'URL',
+    method: 'Method',
+    foo:    'Foo',
+    bar:    'Bar',
+    baz:    'Baz'
+  },
+
   // ACTIONS
   actions: {
 

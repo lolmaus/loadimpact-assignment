@@ -1,1 +1,32 @@
-{{yield}}
+<div class="reqUest-item _id">
+  {{request.id}}
+</div>
+
+<div class="reqUest-item _url">
+
+  {{#if fake}}
+    {{request.url}}
+  {{else}}
+    <a
+      href={{request.url}}
+      target="_blank"
+    >{{request.url}}</a>
+  {{/if}}
+
+</div>
+
+<div class="reqUest-item _method">
+  {{request.method}}
+</div>
+
+<div class="reqUest-item _foo">
+  {{request.foo}}
+</div>
+
+<div class="reqUest-item _bar">
+  {{request.bar}}
+</div>
+
+<div class="reqUest-item _baz">
+  {{request.baz}}
+</div>

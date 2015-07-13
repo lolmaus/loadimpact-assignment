@@ -1,4 +1,10 @@
-<div class="demoDesc-inner">
+<div
+  class="demoDesc-inner"
+  {{action "pan" "left"  on="panLeft"}}
+  {{action "pan" "right" on="panRight"}}
+  {{action "pan" "up"    on="panUp"}}
+  {{action "pan" "down"  on="panDown"}}
+>
   <div class="demoDesc-inner2">
     <div class="demoDesc-label _demo">
       Demo

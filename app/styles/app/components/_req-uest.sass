@@ -1,0 +1,59 @@
+////------------------------------------------
+.reqUest
+  //------------------------------------------
+
+  // ----- Text -----
+  font-size: 0.9rem
+
+  // ----- Look -----
+
+  // ----- Content layout -----
+  //+eq(small)
+  //  display:   flex
+  //  flex-wrap: wrap
+  //    max-width: 200px
+  //
+  //  .reqUest-item
+  //    &._url
+  //      order: -1
+  //      width: 100%
+  //
+  //    &._id
+  //      width: 30%
+  //
+  //    &._method
+  //      width: 70%
+  //
+  //
+  //+eq(large)
+  display: table-row
+
+  &:nth-child(odd)
+    background-color: #eaf1ef
+
+  transition: transform 0.6s
+  &:not(.-fake):hover
+    background-color: #bbd6dd
+
+  .reqUest-item
+    display:        table-cell
+    vertical-align: middle
+    padding:        0.3rem 1rem
+
+    &._id
+      width: 5%
+
+    &._url
+      width: 40%
+
+    &._method
+      width: 10%
+
+    &._foo
+      width: 15%
+
+    &._bar
+      width: 15%
+
+    &._baz
+      width: 15%

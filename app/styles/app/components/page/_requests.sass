@@ -9,6 +9,12 @@
   &, .paginatorWithOptions
     +dark
 
+  .page-requests-content-yield
+    overflow-x: scroll
+
+  .paGe-aside
+    background-color: #112233
+
   // ----- Content layout -----
   +eq(small)
     .paGe-aside .paginatorWithOptions
@@ -51,6 +57,9 @@
       right: 0
       width: auto
 
+    .sticky._demoDesc
+      position: fixed
+
 
   +eq(large)
     .paGe-content .sticky._pagiNator
@@ -58,7 +67,7 @@
 
     .sticky._demoDesc
       position:   relative // Required for box-shadow for some reason
-      box-shadow: 0px 5px 10px 0 black
+      box-shadow: 0px 5px 5px -5px black
 
     .sticky-wrapper.is-sticky > .sticky._demoDesc
       right: 0
@@ -70,7 +79,7 @@
       .sticky-wrapper
         display: none
 
-    .page-requests-content
+    .page-requests-content-content
       display: flex
       > *
         width: 50%
@@ -81,30 +90,60 @@
     .sticky._pagiNator
       transition: top 0.6s
 
+    .sticky._demoDesc
+      z-index: 20
+
     .page-requests-content
-      position: relative
       overflow: hidden
 
-    .page-requests-content-sidebar
-      position:   absolute
-      left:       100%
-      width: 100%
-      top: 0
-      height: 100%
+    .page-requests-content-content
+      width: 200%
+      display: flex
+      position: relative
       transition: left 0.6s
-      overflow-x: auto
+      left: 0
+
+    .page-requests-content-yield, .page-requests-content-sidebar
+      width: 50%
+
+    .paGe-aside
+      z-index: 5
 
     &.-modeIsDemo
-      .page-requests-content-sidebar
-        left: 0
+      .page-requests-content-content
+        left: -100%
 
       .sticky._pagiNator:not(.increasing-specificity)
         top: -300px !important
 
+
+    //.sticky._pagiNator
+    //  transition: top 0.6s
+    //
+    //.page-requests-content
+    //  position: relative
+    //  overflow: hidden
+    //
+    //.page-requests-content-sidebar
+    //  position:   absolute
+    //  left:       100%
+    //  width: 100%
+    //  top: 0
+    //  height: 100%
+    //  transition: left 0.6s
+    //  overflow-x: auto
+    //
+    //&.-modeIsDemo
+    //  .page-requests-content-sidebar
+    //    left: 0
+    //
+    //  .sticky._pagiNator:not(.increasing-specificity)
+    //    top: -300px !important
+
   +eq(small, medium)
     .paginatorWithOptions
       position:   relative // Required for box-shadow for some reason
-      box-shadow: 0px 5px 10px 0 black
+      box-shadow: 0px 5px 5px -5px black
 
 
   +eq(large, huge)
@@ -135,3 +174,11 @@
 
   // ----- Looks -----
   +dark
+
+
+////------------------------------------------
+.page-requests-content-yield
+  //------------------------------------------
+
+  // ----- Looks -----
+  background-color: white

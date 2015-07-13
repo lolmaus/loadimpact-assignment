@@ -15,8 +15,9 @@
     "pretender": "^0.6.0",
     "sticky": "~1.0.1",
     "eq.js": "~1.6.0",
-    "sass-toolkit": "~2.9.0"
+    "sass-toolkit": "~2.9.0",
+    "fastclick": "~1.0.6",
+    "hammerjs": "~2.0.4"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

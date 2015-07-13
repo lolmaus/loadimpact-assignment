@@ -41,6 +41,12 @@ export default Ember.Controller.extend({
   // OBSERVERS
   adherePageToLimit: Ember.observer('page', 'pagesCount', function() {
     var pagesCount = this.get('pagesCount');
+
+    if (pagesCount < 1) {
+      this.set('page', 1);
+      return
+    }
+
     if (this.get('page') > pagesCount)
       this.set('page', pagesCount);
   }),
