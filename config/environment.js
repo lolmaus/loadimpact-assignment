@@ -29,11 +29,6 @@ module.exports = function(environment) {
       'style-src':  "'self' fonts.googleapis.com 'unsafe-inline'",
       'script-src': "'self' 'unsafe-eval' localhost:35729 0.0.0.0:35729 s.imgur.com",
       'frame-src':  "'self' *.photobucket.com"
-    },
-
-
-    fingerprint: {
-      extensions: ['js', 'css', 'map']
     }
   };
 

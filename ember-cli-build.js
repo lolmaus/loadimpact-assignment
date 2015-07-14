@@ -29,6 +29,10 @@ module.exports = function(defaults) {
           'app': '/app/styles/app.css' // A hack to support ember-cli-postcss
         }
       }
+    },
+
+    fingerprint: {
+      extensions: ['js', 'css', 'map']
     }
   });
 
