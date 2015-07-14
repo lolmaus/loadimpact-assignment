@@ -114,7 +114,7 @@
   This is merely a weekend project. If it were a commercial website, a lot of stuff could be done better and more thorough:
 
   * **Tests**. This is a quick experiment, a prototype. The lack of tests here doesn't mean I would neglect automated testing in my work.
-  * **Performance**. EQ.js turned out to be not as fluent as I hoped it to be. Also not flawless. :(
+  * **Performance**. Either EQ.js or [StickyJS](http://stickyjs.com/) turned out to be laggy. Also, EQ.js is slightly buggy. :(
   * **Lack of touch gestures support**. That's especially noticeable with the demo/desc toggler on mobile and the lack of table panning on desktop. At first I did include [`ember-mobiletouch`](https://github.com/runspired/ember-mobiletouch) which leverages [HammerJS](http://hammerjs.github.io/),but it prevented select dropdowns from popping out on mobile. Even in Chrome emulation!
   * **Non-ideal layout**. When the table won't fit, the horizontal scrollbar appears at the very bottom of the page. You can easily pan the table with a touch gesture or middle mouse drag, but when browsing oldschool you'd have to scroll vertically to the bottom in order to be able to scroll horizontally. This can be resolved by scrolling table and cover letter divs separately. I just didn't have time to implement it.
   * **Inefficient animations**. Yeah, I used `transition: left` and `$().slideUp()`. I know, I know. GPU-powered, non-repaint-inducing transforms are the way to do it.
