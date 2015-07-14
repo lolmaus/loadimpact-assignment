@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
 
   // STATIC PROPERTIES
   availablePages: [10, 50, 100, 250],
-  modeIsDemo: false,
+  modeIsDemo:     false,
 
   // COMPUTED PROPERTIES
   pagesCount: Ember.computed('totalCount', 'limit', function() {
@@ -28,7 +28,7 @@ export default Ember.Controller.extend({
 
   // List of sort columns is extracted from the model
   sortByList: Ember.computed(function() {
-    let attrsMap = Ember.get(Request, 'attributes');
+    let attrsMap   = Ember.get(Request, 'attributes');
     let sortByList = ['id'];
 
     // Have to do this to avoid using the Map's private ._keys
