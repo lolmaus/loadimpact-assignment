@@ -28,8 +28,8 @@ export default Ember.Controller.extend({
 
   // List of sort columns is extracted from the model
   sortByList: Ember.computed(function() {
-    var attrsMap = Ember.get(Request, 'attributes');
-    var sortByList = ['id'];
+    let attrsMap = Ember.get(Request, 'attributes');
+    let sortByList = ['id'];
 
     // Have to do this to avoid using the Map's private ._keys
     attrsMap.forEach((val, key) => sortByList.push(key));
@@ -40,7 +40,7 @@ export default Ember.Controller.extend({
 
   // OBSERVERS
   adherePageToLimit: Ember.observer('page', 'pagesCount', function() {
-    var pagesCount = this.get('pagesCount');
+    let pagesCount = this.get('pagesCount');
 
     if (pagesCount < 1) {
       this.set('page', 1);
