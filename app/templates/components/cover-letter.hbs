@@ -1,0 +1,153 @@
+{{#ember-markdown-section class="coverLetter-content"}}
+  I was to implement pagination with Ember. What a boring, routine task! I decided to spice it up a bit.
+
+  This demo pursues **two goals**:
+
+  * demonstrate my good knowledge of Ember;
+  * demonstrate my good skill in responsive web design.
+
+  [View source on GitHub](https://github.com/lolmaus/loadimpact-assignment)
+
+  ## Ember stuff
+
+  ### Constantly vailable paginator
+
+  Apart from setting up an Ember CLI project and mocking the backend in production, it took me about an hour to implement basic pagination. But a traditional solution to pagination in Ember has a subtle pitfall.
+
+  > If you place the paginator in the same route as the paginated data and use a "loading" subroute, the paginator disappears while the data is being loaded.
+
+  This is undesirable. After selecting a page and while the data is loading, a user might change his mind and would like to select another page. For that to be possible, the paginator must reside in the parent route.
+
+  But the paginator must know the current page and the number of pages, which are only available in the child route: that info comes as metadata for the paginated data. So I had to cheat a little: I implemented a special API that reports only the metadata and used it in the parent's route model hook.
+
+  In order to feed the metadata into the store, I had to use `store.setMetadataFor()`. I was surprised to discover that this invaluable method is deprecated. The only remaining way of feeding the metadata into the store is from a serializer which assumes that a request for data is being made. It is not my usecase. In the Slack community I was told that Ember 2.x is going to get a new, better metadata system.
+
+  ### Extra pagination options
+
+  Flipping pages is so mainstream!
+
+  > Finding a certain arbitrary value among all records might be tedious.
+
+  I added API and controls for adjusting the limit (the number of elements on a page), selecting the column to sort by and toggling the sort order.
+
+
+  ### Backend mock
+
+  This app uses a full-fledged Ember Data setup to query for paginated content.
+
+  > But it's hosted on Github Pages, without any backned.
+
+  But you won't Ajax requests on the network panel of your browser. This demo lacks a backend counterpart, and in order to make Ember Data work I used [Pretender](https://github.com/trek/pretender).
+
+  When the app starts, all the content to be mocked is predownloaded into Pretender. But this data is abstracted from the rest of the app via the real Ember Data workflow. No cheating here.
+
+  ...except that the whole content was almost 7 MiB in a terse CSV format, it would be over 10 MiB in JSON. So I cropped it to only the first 2000 items.
+
+
+  ### Used addons
+
+  I used quite a number of useful Ember addons:
+
+  * [`ember-cli-google-fonts`](https://github.com/damiencaselli/ember-cli-google-fonts);
+  * [`ember-cli-ic-ajax`](https://github.com/rwjblue/ember-cli-ic-ajax) -- for calling the custom metadata API;
+  * [`ember-cli-json-module`](https://github.com/IvyApp/ember-cli-json-module) -- for making the mock data available as a ES2015 module;
+  * [`ember-cli-postcss`](https://github.com/jeffjewiss/ember-cli-postcss) + [`autoprefixer-core`](https://github.com/postcss/autoprefixer-core);
+  * [`ember-cli-pretender`](https://www.npmjs.com/package/ember-cli-pretender) -- for mocking the backend in production mode;
+  * [`ember-cli-sass`](https://github.com/aexmachina/ember-cli-sass) -- limited in feauteres compared to Ruby Sass, but hella fast;
+  * [`ember-cli-sticky`](https://github.com/brandonhilkert/ember-cli-sticky) -- for fixed interface elements to sides of the screen;
+  * [`ember-markdown-section`](https://github.com/lolmaus/ember-markdown-section) -- for writing this text in Markdown rather than verbose HTML;
+  * [`ember-truth-helpers`](https://github.com/jmurphyau/ember-truth-helpers) -- c'mon, you know what it is. You should!
+
+  Please go star every one of them. It means a lot to [us](https://github.com/lolmaus/ember-cli-stained-by-children/) humble addon developers!
+
+  ### Notable code samples
+
+  TBD
+
+
+  ## Responsive Web Design
+
+  For a long time I've had this idea of a responsive layout, but until now I haven't had a project to try it in. When Load Impact gave me this assignment, my eyes started sparkling from anticipation.
+
+  ### The layout
+
+  It's a fully responsive layout that uses screen real estate effectively.
+
+  > I'm perplexed by the modern trend. They limit page width to 980px and 50% of my screen area is wasted. Even worse, they steal the valuable vertical space with their fixed header.
+
+  <div class="p">
+    <a href="http://www.snowbird.com/" target="_blank">
+      ![example](../images/wasted-space.png)
+    </a>
+  </div>
+
+  Why don't you put your navigation to the empty sides, <a href="http://i.imgur.com/SHL8uDN.jpg" target="_blank">you dense mofo</a>?
+
+  My idea is to use all the area as efficiently as possible.
+
+  The navigation is also fixed, but it tries hard not to get into your way.
+
+  Try to resize the browser and witness it respond! :D
+
+
+  ### Element queries
+
+  Media queries have a fundamental flaw.
+
+  > They only take viewport width into account. It is very burdensome to set up a complex layout with responsive elements deeply nested into each other. You have to track all realignments globally.
+
+  This demo's responsive layout would hardly be possible withouth element queries: a CSS+JS technique that allows applying styles to an element based on that element's own width. You no longer care about parent layout, you just style the element in isolation. Pure webdev bliss!
+
+  I used Sam Richard's [EQ.js](https://github.com/Snugug/eq.js) for Element Queries which claims to be the most performant implementation. Not the most convenient to use, though.
+
+  Each responsive element on this site realigns individually. It responds it its immediate bounding box, not to the viewport.
+
+  The paginator is a feather in my cap. Its CSS implementation took the most time and required some Sass black magic.
+
+
+  ## Known imperfections
+
+  This is merely a weekend project. If it were a commercial website, a lot of stuff could be done better and more thorough:
+
+  * **Tests**. This is a quick experiment, a prototype. The lack of tests here doesn't mean I would neglect automated testing in my work.
+  * **Performance**. EQ.js turned out to be not as fluent as I hoped it to be. Also not flawless. :(
+  * **Lack of touch gestures support**. That's especially noticeable with the demo/desc toggler on mobile and the lack of table panning on desktop. At first I did include [`ember-mobiletouch`](https://github.com/runspired/ember-mobiletouch) which leverages [HammerJS](http://hammerjs.github.io/),but it prevented select dropdowns from popping out on mobile. Even in Chrome emulation!
+  * **Non-ideal layout**. When the table won't fit, the horizontal scrollbar appears at the very bottom of the page. You can easily pan the table with a touch gesture or middle mouse drag, but when browsing oldschool you'd have to scroll vertically to the bottom in order to be able to scroll horizontally. This can be resolved by scrolling table and cover letter divs separately. I just didn't have time to implement it.
+  * **Inefficient animations**. Yeah, I used `transition: left` and `$().slideUp()`. I know, I know. GPU-powered, non-repaint-inducing transforms are the way to do it.
+  * **Lack of feedback from paginator**. You click a page and nothing happens until the data is ready. I did figure out how to make the paginator aware of transitions state, but didn't have a chance to implement it.
+  * **Commit messages are crappy**. Well, I believe that's totally fine for the earliest stage of the development of any product.
+
+  ## Raised GithHub issues and PRs
+
+  There's hardly an Ember app that doesn't have a trail of issues and PRs. This one is no exception.
+
+  **Issues**
+
+  * [ember-mobiletouch prevents &lt;select> elements from popping out on mobile #65](https://github.com/runspired/ember-mobiletouch/issues/65)
+  * EQ.js TBD
+
+  **Solutions to issues**
+
+  * [pretender: won't work with EmberJS #36](https://github.com/trek/pretender/issues/36#issuecomment-121097384)
+
+  **PRs**
+
+  * [ember-cli-sticky: Adjustable topSpacing #7](https://github.com/brandonhilkert/ember-cli-sticky/pull/7)
+  * [ember-markdown-section: Updated the usage example with component invocation](https://github.com/ChrisHonniball/ember-markdown-section/pull/2)
+
+  ## Making of
+
+  \#nofilter
+
+  {{#intrinsic-ratio
+    width=480
+    height=360
+  }}
+    <iframe
+      width="480"
+      height="360"
+      src="http://s1228.photobucket.com/user/lolmaus/embed/slideshow/">
+    </iframe>
+  {{/intrinsic-ratio}}
+
+{{/ember-markdown-section}}
