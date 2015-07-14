@@ -8,6 +8,8 @@
 
   [View source on GitHub](https://github.com/lolmaus/loadimpact-assignment)
 
+  Built with Ember 1.13. Keep that in mind, future people.
+
   ## Ember stuff
 
   ### Constantly vailable paginator
@@ -62,7 +64,11 @@
 
   ### Notable code samples
 
-  TBD
+  * [the custom API call](https://github.com/lolmaus/loadimpact-assignment/blob/master/app/adapters/request.js#L7-7), implemented in the adapter ([invocation](https://github.com/lolmaus/loadimpact-assignment/blob/master/app/routes/requests.js#L10-10))
+  * [the parent controller](https://github.com/lolmaus/loadimpact-assignment/blob/master/app/controllers/requests.js) where the magic happens and [the child controller](app/controllers/requests/index.js) that manages aliased query params
+  * the paginator component: [JS](https://github.com/lolmaus/loadimpact-assignment/blob/master/app/components/pagi-nator.js), [template](https://github.com/lolmaus/loadimpact-assignment/blob/master/app/templates/components/pagi-nator.hbs)
+  * [Sass black magic](https://github.com/lolmaus/loadimpact-assignment/blob/master/app/styles/app/components/_pagi-nator.sass#L19-19) fuelling the paginator's responsiveness
+  * [the backend mock](https://github.com/lolmaus/loadimpact-assignment/blob/master/app/initializers/backend-mock.js) -- that's some procedural code, I just quickly tossed the thing together.
 
 
   ## Responsive Web Design
@@ -83,9 +89,7 @@
 
   Why don't you put your navigation to the empty sides, <a href="http://i.imgur.com/SHL8uDN.jpg" target="_blank">you dense mofo</a>?
 
-  My idea is to use all the area as efficiently as possible.
-
-  The navigation is also fixed, but it tries hard not to get into your way.
+  So my idea is to use all the area as efficiently as possible. The navigation is still fixed, but it tries hard not to get into your way.
 
   Try to resize the browser and witness it respond! :D
 
