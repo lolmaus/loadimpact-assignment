@@ -11,7 +11,7 @@ export default Ember.Component.extend({
   attributeBindings: 'style',
 
   style: Ember.computed('width', 'height', function() {
-    var padding = this.get('height') / this.get('width') * 100;
+    let padding = this.get('height') / this.get('width') * 100;
 
     return `padding-top: ${padding}%;`;
   })

@@ -23,12 +23,14 @@ export default Ember.Route.extend({
   setupController (controller, model) {
     this._super(controller, model);
 
-    var totalCount = this.store.metadataFor('request').totalCount;
+    let totalCount = this.store.metadataFor('request').totalCount;
 
-    this.controllerFor('requests').set('totalCount', totalCount);
+    this
+      .controllerFor('requests')
+      .set('totalCount', totalCount);
   },
 
-  // METHODS
+  // CUSTOM METHODS
   allowedLimit (suggestedLimit) {
     suggestedLimit = parseInt(suggestedLimit, 10);
     if (isNaN(suggestedLimit) || !isFinite(suggestedLimit)) return 100;
@@ -41,7 +43,7 @@ export default Ember.Route.extend({
   actions: {
     loading () {
       window.scrollTo(0, 0);
-      return true;
+      return true; // Let the action bubble through
     }
   }
 });

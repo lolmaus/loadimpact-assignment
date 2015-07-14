@@ -2,7 +2,7 @@ import Requests from 'loadimpact-assignment/fixtures/requests';
 //import Pretender from 'pretender';
 
 // Formatting data into JSONAPI format
-var requests = Requests.map((request) => {
+let requests = Requests.map((request) => {
   let id = request.id;
   delete request.id;
   return {
@@ -15,15 +15,15 @@ var requests = Requests.map((request) => {
 export function initialize(/* container, application */) {
   // application.inject('route', 'foo', 'service:foo');
 
-  var server = new Pretender(function(){
+  let server = new Pretender(function(){
     this.get('/requests', function(request){
 
       // Special case: reporting count only
       if (request.queryParams && request.queryParams.count)
         return [200, {}, {meta: {totalCount: requests.count}}];
 
-      var suggestedLimit = request.queryParams && request.queryParams.limit;
-      var limit = parseInt(suggestedLimit, 10);
+      let suggestedLimit = request.queryParams && request.queryParams.limit;
+      let limit = parseInt(suggestedLimit, 10);
 
       if (
         isNaN(limit)
@@ -33,8 +33,8 @@ export function initialize(/* container, application */) {
       )
         return [500, {}, {error: 'incorrect limit'}];
 
-      var suggestedPage = request.queryParams && request.queryParams.page;
-      var page = parseInt(suggestedPage, 10);
+      let suggestedPage = request.queryParams && request.queryParams.page;
+      let page = parseInt(suggestedPage, 10);
 
       if (
         isNaN(page)
@@ -43,16 +43,16 @@ export function initialize(/* container, application */) {
       )
         return [500, {}, {error: 'incorrect limit'}];
 
-      var columns = ['id'].concat(Object.keys(requests[0].attributes));
-      var suggestedSortBy = request.queryParams && request.queryParams.sortBy;
-      var sortBy;
+      let columns = ['id'].concat(Object.keys(requests[0].attributes));
+      let suggestedSortBy = request.queryParams && request.queryParams.sortBy;
+      let sortBy;
       if (columns.indexOf(suggestedSortBy) > -1)
         sortBy = suggestedSortBy;
       else
         return [500, {}, {error: 'incorrect sortBy'}];
 
-      var suggestedSortOrder = request.queryParams && request.queryParams.sortOrder;
-      var reverseOrder;
+      let suggestedSortOrder = request.queryParams && request.queryParams.sortOrder;
+      let reverseOrder;
       if (!suggestedSortOrder || suggestedSortOrder === 'asc')
         reverseOrder = false;
       else if (suggestedSortOrder === 'desc')
@@ -60,7 +60,7 @@ export function initialize(/* container, application */) {
       else
         return [500, {}, {error: 'incorrect sortOrder'}];
 
-      var sortedRequests = requests;
+      let sortedRequests = requests;
 
       if (sortBy !== 'id')
         sortedRequests = requests.slice().sort((a, b) => {
@@ -71,12 +71,12 @@ export function initialize(/* container, application */) {
 
       if (reverseOrder) sortedRequests.reverse();
 
-      var firstItemIndex = limit * (page - 1); // zero-indexed array vs one-indexed query param
-      var lastItemIndex  = limit * page;
+      let firstItemIndex = limit * (page - 1); // zero-indexed array vs one-indexed query param
+      let lastItemIndex  = limit * page;
 
-      var filteredRequests = sortedRequests.slice(firstItemIndex, lastItemIndex);
+      let filteredRequests = sortedRequests.slice(firstItemIndex, lastItemIndex);
 
-      var all =  {
+      let all =  {
         data: filteredRequests,
         meta: {
           totalCount: requests.length

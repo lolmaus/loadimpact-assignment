@@ -17,14 +17,13 @@ export default Ember.Component.extend({
   ],
   attributeBindings: ['data-eq-pts'],
 
-  // STATIC PROPERTIES
+  // CUSTOM STATIC PROPERTIES
   'data-eq-pts': 'size6: 0, size5: 240, size4: 260, size3: 280, size2: 300, size1: 320',
 
   // COMPUTED PROPERTIES
   pagesBefore: Ember.computed('page', function() {
-    var result = [];
-
-    var prevPage = this.get('page') - 1;
+    let result   = [];
+    let prevPage = this.get('page') - 1;
 
     if (prevPage <= 0) { return result; }
 
@@ -37,14 +36,13 @@ export default Ember.Component.extend({
   }),
 
   pagesAfter: Ember.computed('page', 'totalPages', function() {
-    var result = [];
-
-    var nextPage = this.get('page') + 1;
-    var totalPages = this.get('totalPages');
+    let result = [];
+    let nextPage = this.get('page') + 1;
+    let totalPages = this.get('totalPages');
 
     if (nextPage > totalPages) { return result; }
 
-    for (var i = nextPage; i <= totalPages; i++) {
+    for (let i = nextPage; i <= totalPages; i++) {
       if (i - nextPage >= this.get('maxShown')) { break; }
       result.push(i);
     }
@@ -61,26 +59,26 @@ export default Ember.Component.extend({
   }),
 
   pagesBeforeClass: Ember.computed('pagesBefore', function() {
-    var len = this.get('pagesBefore.length');
+    let len = this.get('pagesBefore.length');
 
     if (len)
       return "-before-" + len;
   }),
 
   pagesAfterClass: Ember.computed('pagesAfter', function() {
-    var len = this.get('pagesAfter.length');
+    let len = this.get('pagesAfter.length');
 
     if (len)
       return "-after-" + len;
   }),
 
   prevPage: Ember.computed('page', function() {
-    var page = this.get('page') - 1;
+    let page = this.get('page') - 1;
     if (page > 1) return page;
   }),
 
   nextPage: Ember.computed('page', 'totalPages', function() {
-    var page = this.get('page') + 1;
+    let page = this.get('page') + 1;
     if (page < this.get('totalPages')) return page;
   }),
 

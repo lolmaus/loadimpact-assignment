@@ -18,20 +18,20 @@ export default Ember.Component.extend({
   classNameBindings: 'optionsVisible:-optionsVisible',
   attributeBindings: ['data-eq-pts'],
 
-  // STATIC PROPERTIES
+  // CUSTOM STATIC PROPERTIES
   'data-eq-pts':  'size5: 240, size4: 260, size3: 280, size2: 300, size1: 320',
   optionsVisible: false,
   $options:       null, // to be set in didInsertElement
 
   // OVERRIDDEN METHODS
   didInsertElement () {
-    var $options = this.$('.paginatorWithOptions-options');
+    let $options = this.$('.paginatorWithOptions-options');
     this.set('$options', $options);
   },
 
   // OBSERVERS
   toggle$options: Ember.observer('optionsVisible', '$options', function() {
-    var $options = this.get('$options');
+    let $options = this.get('$options');
 
     if (this.get('optionsVisible')) {
       $options.slideDown();

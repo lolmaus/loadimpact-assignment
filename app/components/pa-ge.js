@@ -10,6 +10,6 @@ export default Ember.Component.extend({
   classNameBindings: ['modeIsDemo:-modeIsDemo'],
   attributeBindings: ['data-eq-pts'],
 
-  // STATIC PROPERTIES
+  // CUSTOM STATIC PROPERTIES
   'data-eq-pts': 'small: 0, medium: 550, large: 800, huge: 1025'
 });

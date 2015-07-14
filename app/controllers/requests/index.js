@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-  // REQUIRED
+  // INCOMING PROPERTIES
   model: [],
 
   // QUERY PARAMS
@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
   sortBy:      Ember.computed.alias('requestsController.sortBy'),
   sortOrder:   Ember.computed.alias('requestsController.sortOrder'),
 
-  // STATIC PROPERTIES
+  // CUSTOM STATIC PROPERTIES
   requestsController: Ember.inject.controller('requests'),
 
   requestTitles: {
@@ -22,10 +22,5 @@ export default Ember.Controller.extend({
     foo:    'Foo',
     bar:    'Bar',
     baz:    'Baz'
-  },
-
-  // ACTIONS
-  actions: {
-
   }
 });
