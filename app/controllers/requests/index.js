@@ -5,17 +5,16 @@ export default Ember.Controller.extend({
   // REQUIRED
   model: [],
 
-  // OVERRIDDEN PROPERTIES
-  needs: ['requests'],
-
   // QUERY PARAMS
   queryParams: ['page', 'limit', 'sortBy', 'sortOrder'],
-  page:        Ember.computed.alias('controllers.requests.page'),
-  limit:       Ember.computed.alias('controllers.requests.limit'),
-  sortBy:      Ember.computed.alias('controllers.requests.sortBy'),
-  sortOrder:   Ember.computed.alias('controllers.requests.sortOrder'),
+  page:        Ember.computed.alias('requestsController.page'),
+  limit:       Ember.computed.alias('requestsController.limit'),
+  sortBy:      Ember.computed.alias('requestsController.sortBy'),
+  sortOrder:   Ember.computed.alias('requestsController.sortOrder'),
 
   // STATIC PROPERTIES
+  requestsController: Ember.inject.controller('requests'),
+
   requestTitles: {
     id:     'ID',
     url:    'URL',

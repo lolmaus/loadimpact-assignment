@@ -11,7 +11,7 @@ export default Ember.Route.extend({
   },
 
   // OVERRIDDEN METHODS
-  model: function(params) {
+  model (params) {
     return this.store.query('request', {
       page:      params.page,
       limit:     this.allowedLimit( params.limit ),
@@ -20,7 +20,7 @@ export default Ember.Route.extend({
     });
   },
 
-  setupController: function(controller, model) {
+  setupController (controller, model) {
     this._super(controller, model);
 
     var totalCount = this.store.metadataFor('request').totalCount;
@@ -29,11 +29,19 @@ export default Ember.Route.extend({
   },
 
   // METHODS
-  allowedLimit: function(suggestedLimit) {
+  allowedLimit (suggestedLimit) {
     suggestedLimit = parseInt(suggestedLimit, 10);
     if (isNaN(suggestedLimit) || !isFinite(suggestedLimit)) return 100;
     if (suggestedLimit < 1) return 10;
     if (suggestedLimit > 250) return 250;
     return suggestedLimit;
+  },
+
+  // ACTIONS
+  actions: {
+    loading () {
+      window.scrollTo(0, 0);
+      return true;
+    }
   }
 });

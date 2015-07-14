@@ -1,5 +1,5 @@
 import Requests from 'loadimpact-assignment/fixtures/requests';
-import Pretender from 'pretender';
+//import Pretender from 'pretender';
 
 // Formatting data into JSONAPI format
 var requests = Requests.map((request) => {
@@ -84,7 +84,7 @@ export function initialize(/* container, application */) {
       };
 
       return [200, {}, all];
-    }, 500);
+    }, 1500);
 
 
     this.get('/requests/totalCount', function() {
@@ -93,7 +93,7 @@ export function initialize(/* container, application */) {
   });
 
   server.handledRequest = function (verb, path, request) {
-    console.log("AJAX request", verb, path, request, JSON.parse(request.responseText));
+    Ember.Logger.info("AJAX request", verb, path, request, JSON.parse(request.responseText));
   };
 
   server.prepareBody = function (body) {

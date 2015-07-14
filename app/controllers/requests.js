@@ -44,7 +44,7 @@ export default Ember.Controller.extend({
 
     if (pagesCount < 1) {
       this.set('page', 1);
-      return
+      return;
     }
 
     if (this.get('page') > pagesCount)
@@ -53,11 +53,11 @@ export default Ember.Controller.extend({
 
   // ACTIONS
   actions: {
-    pageChanged: function(value) {
+    pageChanged (value) {
       this.set('page', value);
     },
 
-    limitChanged: function(value) {
+    limitChanged (value) {
       this.set('limit', value);
 
       var totalCount = this.get('totalCount');
@@ -68,12 +68,12 @@ export default Ember.Controller.extend({
     },
 
 
-    sortByChanged: function(value) {
+    sortByChanged (value) {
       this.set('sortBy', value);
     },
 
 
-    sortOrderChanged: function(value) {
+    sortOrderChanged (value) {
       this.set('sortOrder', value);
     }
   }

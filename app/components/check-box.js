@@ -15,7 +15,7 @@ export default Ember.Component.extend({
 
   // ACTIONS
   actions: {
-    changed: function(val) {
+    changed (val) {
       this.set('checked', val);
       //this.get('target').send('changed', val);
     }

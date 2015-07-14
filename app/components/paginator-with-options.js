@@ -24,7 +24,7 @@ export default Ember.Component.extend({
   $options:       null, // to be set in didInsertElement
 
   // OVERRIDDEN METHODS
-  didInsertElement: function() {
+  didInsertElement () {
     var $options = this.$('.paginatorWithOptions-options');
     this.set('$options', $options);
   },
@@ -42,23 +42,23 @@ export default Ember.Component.extend({
 
   // ACTIONS
   actions: {
-    toggleOptions: function() {
-      var state = this.toggleProperty('optionsVisible');
+    toggleOptions () {
+      this.toggleProperty('optionsVisible');
     },
 
-    pageChanged: function(value) {
+    pageChanged (value) {
       this.set('page', value);
     },
 
-    limitChanged: function(value) {
+    limitChanged (value) {
       this.set('limit', value);
     },
 
-    sortByChanged: function(value) {
+    sortByChanged (value) {
       this.set('sortBy', value);
     },
 
-    sortOrderChanged: function(value) {
+    sortOrderChanged (value) {
       this.set('sortOrder', value);
     }
   }

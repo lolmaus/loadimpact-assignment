@@ -4,7 +4,7 @@ import icajax from 'ic-ajax';
 export default ApplicationAdapter.extend({
 
   // METHODS
-  requestTotalCount: function() {
+  requestTotalCount () {
     var url = this.buildURL('request') + '/totalCount';
 
     return icajax({url: url})

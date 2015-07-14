@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'loadimpact-assignment',
     environment: environment,
     baseURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -25,8 +25,14 @@ module.exports = function(environment) {
 
     // Set or update content security policies
     contentSecurityPolicy: {
-      'font-src':  "'self' fonts.gstatic.com",
-      'style-src': "'self' fonts.googleapis.com"
+      'font-src':   "'self' fonts.gstatic.com",
+      'style-src':  "'self' fonts.googleapis.com",
+      'script-src': "'self' 'unsafe-eval' localhost:35729 0.0.0.0:35729 s.imgur.com"
+    },
+
+
+    fingerprint: {
+      extensions: ['js', 'css', 'map']
     }
   };
 
